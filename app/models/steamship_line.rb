@@ -1,0 +1,2 @@
+class SteamshipLine < ApplicationRecord
+end
