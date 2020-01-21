@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gangs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Flexed</th>
+      <th>Shift</th>
+      <th>Top pick</th>
+      <th>Utr</th>
+      <th>Note</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gangs.each do |gang| %>
+      <tr>
+        <td><%= gang.flexed %></td>
+        <td><%= gang.shift %></td>
+        <td><%= gang.top_pick %></td>
+        <td><%= gang.utr %></td>
+        <td><%= gang.note %></td>
+        <td><%= link_to 'Show', gang %></td>
+        <td><%= link_to 'Edit', edit_gang_path(gang) %></td>
+        <td><%= link_to 'Destroy', gang, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gang', new_gang_path %>

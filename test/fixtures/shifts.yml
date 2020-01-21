@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shift_type: MyString
+  late_start: false
+  clean_start: false
+  port_call: one
+
+two:
+  shift_type: MyString
+  late_start: false
+  clean_start: false
+  port_call: two

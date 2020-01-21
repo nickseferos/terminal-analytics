@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  flexed: false
+  shift: one
+  top_pick: 1
+  utr: 1
+  note: MyText
+
+two:
+  flexed: false
+  shift: two
+  top_pick: 1
+  utr: 1
+  note: MyText

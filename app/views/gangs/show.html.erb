@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Flexed:</strong>
+  <%= @gang.flexed %>
+</p>
+
+<p>
+  <strong>Shift:</strong>
+  <%= @gang.shift %>
+</p>
+
+<p>
+  <strong>Top pick:</strong>
+  <%= @gang.top_pick %>
+</p>
+
+<p>
+  <strong>Utr:</strong>
+  <%= @gang.utr %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @gang.note %>
+</p>
+
+<%= link_to 'Edit', edit_gang_path(@gang) %> |
+<%= link_to 'Back', gangs_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_202517) do
+ActiveRecord::Schema.define(version: 2020_01_21_203708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 2020_01_21_202517) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "gangs", force: :cascade do |t|
+    t.boolean "flexed"
+    t.bigint "shift_id"
+    t.integer "top_pick"
+    t.integer "utr"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shift_id"], name: "index_gangs_on_shift_id"
   end
 
   create_table "operators", force: :cascade do |t|
@@ -53,6 +64,16 @@ ActiveRecord::Schema.define(version: 2020_01_21_202517) do
     t.datetime "updated_at", null: false
     t.index ["terminal_id"], name: "index_port_calls_on_terminal_id"
     t.index ["voyage_id"], name: "index_port_calls_on_voyage_id"
+  end
+
+  create_table "shifts", force: :cascade do |t|
+    t.string "shift_type"
+    t.boolean "late_start"
+    t.boolean "clean_start"
+    t.bigint "port_call_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["port_call_id"], name: "index_shifts_on_port_call_id"
   end
 
   create_table "state_provinces", force: :cascade do |t|
@@ -101,8 +122,10 @@ ActiveRecord::Schema.define(version: 2020_01_21_202517) do
   end
 
   add_foreign_key "city_ports", "state_provinces"
+  add_foreign_key "gangs", "shifts"
   add_foreign_key "port_calls", "terminals"
   add_foreign_key "port_calls", "voyages"
+  add_foreign_key "shifts", "port_calls"
   add_foreign_key "state_provinces", "countries"
   add_foreign_key "terminals", "city_ports"
   add_foreign_key "terminals", "operators"
