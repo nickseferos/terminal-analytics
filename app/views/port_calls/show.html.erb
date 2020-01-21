@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Terminal:</strong>
+  <%= @port_call.terminal %>
+</p>
+
+<p>
+  <strong>Voyage:</strong>
+  <%= @port_call.voyage %>
+</p>
+
+<p>
+  <strong>Eta:</strong>
+  <%= @port_call.eta %>
+</p>
+
+<p>
+  <strong>First line:</strong>
+  <%= @port_call.first_line %>
+</p>
+
+<p>
+  <strong>Atd:</strong>
+  <%= @port_call.atd %>
+</p>
+
+<p>
+  <strong>Last line:</strong>
+  <%= @port_call.last_line %>
+</p>
+
+<p>
+  <strong>First container:</strong>
+  <%= @port_call.first_container %>
+</p>
+
+<p>
+  <strong>Last contaienr:</strong>
+  <%= @port_call.last_contaienr %>
+</p>
+
+<p>
+  <strong>First reefer:</strong>
+  <%= @port_call.first_reefer %>
+</p>
+
+<p>
+  <strong>Last reefer:</strong>
+  <%= @port_call.last_reefer %>
+</p>
+
+<p>
+  <strong>Total discharge:</strong>
+  <%= @port_call.total_discharge %>
+</p>
+
+<p>
+  <strong>Total load:</strong>
+  <%= @port_call.total_load %>
+</p>
+
+<p>
+  <strong>Total rehandle:</strong>
+  <%= @port_call.total_rehandle %>
+</p>
+
+<%= link_to 'Edit', edit_port_call_path(@port_call) %> |
+<%= link_to 'Back', port_calls_path %>

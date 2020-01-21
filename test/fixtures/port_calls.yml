@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  terminal: one
+  voyage: one
+  eta: 2020-01-21 12:25:17
+  first_line: 2020-01-21 12:25:17
+  atd: 2020-01-21 12:25:17
+  last_line: 2020-01-21 12:25:17
+  first_container: 2020-01-21 12:25:17
+  last_contaienr: 2020-01-21 12:25:17
+  first_reefer: 2020-01-21 12:25:17
+  last_reefer: 2020-01-21 12:25:17
+  total_discharge: 1
+  total_load: 1
+  total_rehandle: 1
+
+two:
+  terminal: two
+  voyage: two
+  eta: 2020-01-21 12:25:17
+  first_line: 2020-01-21 12:25:17
+  atd: 2020-01-21 12:25:17
+  last_line: 2020-01-21 12:25:17
+  first_container: 2020-01-21 12:25:17
+  last_contaienr: 2020-01-21 12:25:17
+  first_reefer: 2020-01-21 12:25:17
+  last_reefer: 2020-01-21 12:25:17
+  total_discharge: 1
+  total_load: 1
+  total_rehandle: 1

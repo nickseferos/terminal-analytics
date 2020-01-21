@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_200945) do
+ActiveRecord::Schema.define(version: 2020_01_21_202517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,26 @@ ActiveRecord::Schema.define(version: 2020_01_21_200945) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "port_calls", force: :cascade do |t|
+    t.bigint "terminal_id"
+    t.bigint "voyage_id"
+    t.datetime "eta"
+    t.datetime "first_line"
+    t.datetime "atd"
+    t.datetime "last_line"
+    t.datetime "first_container"
+    t.datetime "last_contaienr"
+    t.datetime "first_reefer"
+    t.datetime "last_reefer"
+    t.integer "total_discharge"
+    t.integer "total_load"
+    t.integer "total_rehandle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["terminal_id"], name: "index_port_calls_on_terminal_id"
+    t.index ["voyage_id"], name: "index_port_calls_on_voyage_id"
   end
 
   create_table "state_provinces", force: :cascade do |t|
@@ -64,12 +84,28 @@ ActiveRecord::Schema.define(version: 2020_01_21_200945) do
     t.bigint "steamship_line_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "loa"
+    t.string "breadth"
+    t.string "max_speed"
+    t.string "bays"
+    t.string "capacity"
     t.index ["steamship_line_id"], name: "index_vessels_on_steamship_line_id"
   end
 
+  create_table "voyages", force: :cascade do |t|
+    t.string "number"
+    t.bigint "vessel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vessel_id"], name: "index_voyages_on_vessel_id"
+  end
+
   add_foreign_key "city_ports", "state_provinces"
+  add_foreign_key "port_calls", "terminals"
+  add_foreign_key "port_calls", "voyages"
   add_foreign_key "state_provinces", "countries"
   add_foreign_key "terminals", "city_ports"
   add_foreign_key "terminals", "operators"
   add_foreign_key "vessels", "steamship_lines"
+  add_foreign_key "voyages", "vessels"
 end
