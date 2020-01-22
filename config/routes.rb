@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'terminal_admin/users'
+  devise_for :users
   resources :crane_operators
   resources :gangs
   resources :shifts

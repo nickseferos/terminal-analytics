@@ -1,4 +1,5 @@
 class PortCallsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_port_call, only: [:show, :edit, :update, :destroy]
 
   # GET /port_calls

@@ -1,4 +1,6 @@
 class VesselsController < ApplicationController
+  before_action :authenticate_user!
+  
   before_action :set_vessel, only: [:show, :edit, :update, :destroy]
 
   # GET /vessels

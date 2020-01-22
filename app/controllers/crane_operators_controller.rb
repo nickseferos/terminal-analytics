@@ -1,4 +1,5 @@
 class CraneOperatorsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_crane_operator, only: [:show, :edit, :update, :destroy]
 
   # GET /crane_operators

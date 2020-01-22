@@ -12,8 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :terminal_id %>
-    <%= form.collection_select( :terminal_id , Terminal.all, :id, :name)%>
+    <%= form.hidden_field :terminal_id, value: current_user.terminal_id %>
   </div>
 
   <div class="field">

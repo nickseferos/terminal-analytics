@@ -1,4 +1,5 @@
 class GangsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_gang, only: [:show, :edit, :update, :destroy]
 
   # GET /gangs
