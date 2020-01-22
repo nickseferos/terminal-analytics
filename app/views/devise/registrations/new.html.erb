@@ -15,7 +15,12 @@
 
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :first_name, autocomplete: "family-name" %>
+    <%= f.text_field :last_name, autocomplete: "family-name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :terminal %><br />
+    <%= f.collection_select( :terminal_id , Terminal.all, :id, :name)%>
   </div>
 
   <div class="field">
