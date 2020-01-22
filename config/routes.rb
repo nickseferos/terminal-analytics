@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :crane_operators
   resources :gangs
   resources :shifts
   resources :port_calls

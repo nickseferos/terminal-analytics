@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_203708) do
+ActiveRecord::Schema.define(version: 2020_01_22_002316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 2020_01_21_203708) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "crane_operators", force: :cascade do |t|
+    t.string "name"
+    t.string "work_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "gangs", force: :cascade do |t|
     t.boolean "flexed"
     t.bigint "shift_id"
@@ -38,6 +45,15 @@ ActiveRecord::Schema.define(version: 2020_01_21_203708) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["shift_id"], name: "index_gangs_on_shift_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.bigint "crane_operator_id"
+    t.bigint "gang_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crane_operator_id"], name: "index_jobs_on_crane_operator_id"
+    t.index ["gang_id"], name: "index_jobs_on_gang_id"
   end
 
   create_table "operators", force: :cascade do |t|
@@ -62,6 +78,9 @@ ActiveRecord::Schema.define(version: 2020_01_21_203708) do
     t.integer "total_rehandle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "prelim_discharge"
+    t.boolean "prelim_load"
+    t.boolean "prelim_rehandle"
     t.index ["terminal_id"], name: "index_port_calls_on_terminal_id"
     t.index ["voyage_id"], name: "index_port_calls_on_voyage_id"
   end
@@ -123,6 +142,8 @@ ActiveRecord::Schema.define(version: 2020_01_21_203708) do
 
   add_foreign_key "city_ports", "state_provinces"
   add_foreign_key "gangs", "shifts"
+  add_foreign_key "jobs", "crane_operators"
+  add_foreign_key "jobs", "gangs"
   add_foreign_key "port_calls", "terminals"
   add_foreign_key "port_calls", "voyages"
   add_foreign_key "shifts", "port_calls"

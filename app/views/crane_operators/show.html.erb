@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @crane_operator.name %>
+</p>
+
+<p>
+  <strong>Work number:</strong>
+  <%= @crane_operator.work_number %>
+</p>
+
+<%= link_to 'Edit', edit_crane_operator_path(@crane_operator) %> |
+<%= link_to 'Back', crane_operators_path %>
