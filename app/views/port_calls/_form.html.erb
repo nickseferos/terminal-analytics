@@ -17,7 +17,8 @@
 
   <div class="field">
     <%= form.label :voyage_id %>
-    <%= form.collection_select( :voyage_id , Voyage.all, :id, :number)%>
+
+    <%= form.select 'voyage_id', options_for_select(@voyage.collect{ |v| [v.vessel.name + " " +v.number, v.id] })%>
   </div>
 
   <div class="field">

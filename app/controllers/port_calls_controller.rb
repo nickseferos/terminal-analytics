@@ -16,6 +16,7 @@ class PortCallsController < ApplicationController
   # GET /port_calls/new
   def new
     @port_call = PortCall.new
+    @voyage = Voyage.all
   end
 
   # GET /port_calls/1/edit
