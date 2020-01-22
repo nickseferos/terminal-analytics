@@ -1,51 +1,126 @@
-<p id="notice"><%= notice %></p>
+<h3>Vessels at <%= current_user.terminal.name %> <%= link_to 'Create New Port Call', new_port_call_path, class:'btn btn-outline-primary btn-lg' %></h3></br>
+<div class="col-md-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+			<h6 class="card-title">Current Vessels <%= link_to 'Create New Call', new_port_call_path, class: 'btn btn-light' %></h6>
+			<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Vessel &amp; Voyage</th>
+								<th>First Line</th>
+								<th>Est. Departure</th>
+								<th>Total Discharge</th>
+                <th>Total Load</th>
+                <th>Total Re-Handles</th>
 
-<h1>Port Calls</h1>
+							</tr>
+						</thead>
+						<tbody>
+              <% @port_calls.each do |port_call| %>
+                <tr>
+                  <td><%= port_call.voyage.vessel.name %> <%= port_call.voyage.number %></td>
+                  <td><%= port_call.first_line %></td>
+                  <td><%= port_call.atd %></td>
+                  <td><%= port_call.total_discharge %></td>
+                  <td><%= port_call.total_load %></td>
+                  <td><%= port_call.total_rehandle %></td>
+                  <td>
+                    <div class="btn-group">
+                      <%= link_to 'Show', port_call, class: 'btn btn-secondary' %>
+                      <%= link_to 'Edit', edit_port_call_path(port_call), class: 'btn btn-light' %>
+                      <%= link_to 'Destroy', port_call, method: :delete, data: { confirm: 'This vessel has arrived. Are you sure you wish to delete? Any counts or tracking of operators will be removed from the database.' }, class: 'btn btn-danger' %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+						</tbody>
+					</table>
+			</div>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Terminal</th>
-      <th>Voyage</th>
-      <th>Eta</th>
-      <th>First line</th>
-      <th>Atd</th>
-      <th>Last line</th>
-      <th>First container</th>
-      <th>Last contaienr</th>
-      <th>First reefer</th>
-      <th>Last reefer</th>
-      <th>Total discharge</th>
-      <th>Total load</th>
-      <th>Total rehandle</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="col-md-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+			<h6 class="card-title">Upcoming Vessels <%= link_to 'Create New Call', new_port_call_path, class: 'btn btn-light' %></h6>
+			<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Vessel &amp; Voyage</th>
+								<th>First Line</th>
+								<th>Est. Departure</th>
+								<th>Total Discharge</th>
+                <th>Total Load</th>
+                <th>Total Re-Handles</th>
 
-  <tbody>
-    <% @port_calls.each do |port_call| %>
-      <tr>
-        <td><%= port_call.terminal %></td>
-        <td><%= port_call.voyage %></td>
-        <td><%= port_call.eta %></td>
-        <td><%= port_call.first_line %></td>
-        <td><%= port_call.atd %></td>
-        <td><%= port_call.last_line %></td>
-        <td><%= port_call.first_container %></td>
-        <td><%= port_call.last_contaienr %></td>
-        <td><%= port_call.first_reefer %></td>
-        <td><%= port_call.last_reefer %></td>
-        <td><%= port_call.total_discharge %></td>
-        <td><%= port_call.total_load %></td>
-        <td><%= port_call.total_rehandle %></td>
-        <td><%= link_to 'Show', port_call %></td>
-        <td><%= link_to 'Edit', edit_port_call_path(port_call) %></td>
-        <td><%= link_to 'Destroy', port_call, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+							</tr>
+						</thead>
+						<tbody>
+              <% @port_calls.each do |port_call| %>
+                <tr>
+                  <td><%= port_call.voyage.vessel.name %> <%= port_call.voyage.number %></td>
+                  <td><%= port_call.first_line %></td>
+                  <td><%= port_call.atd %></td>
+                  <td><%= port_call.total_discharge %></td>
+                  <td><%= port_call.total_load %></td>
+                  <td><%= port_call.total_rehandle %></td>
+                  <td>
+                    <div class="btn-group">
+                      <%= link_to 'Show', port_call, class: 'btn btn-secondary' %>
+                      <%= link_to 'Edit', edit_port_call_path(port_call), class: 'btn btn-light' %>
+                      <%= link_to 'Destroy', port_call, method: :delete, data: { confirm: 'This vessel has arrived. Are you sure you wish to delete? Any counts or tracking of operators will be removed from the database.' }, class: 'btn btn-danger' %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+						</tbody>
+					</table>
+			</div>
+    </div>
+  </div>
+</div>
 
-<br>
+<div class="col-md-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+			<h6 class="card-title">Previous Vessels <%= link_to 'Create New Call', new_port_call_path, class: 'btn btn-light' %></h6>
+			<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Vessel &amp; Voyage</th>
+								<th>First Line</th>
+								<th>Est. Departure</th>
+								<th>Total Discharge</th>
+                <th>Total Load</th>
+                <th>Total Re-Handles</th>
 
-<%= link_to 'New Port Call', new_port_call_path %>
+							</tr>
+						</thead>
+						<tbody>
+              <% @port_calls.each do |port_call| %>
+                <tr>
+                  <td><%= port_call.voyage.vessel.name %> <%= port_call.voyage.number %></td>
+                  <td><%= port_call.first_line %></td>
+                  <td><%= port_call.atd %></td>
+                  <td><%= port_call.total_discharge %></td>
+                  <td><%= port_call.total_load %></td>
+                  <td><%= port_call.total_rehandle %></td>
+                  <td>
+                    <div class="btn-group">
+                      <%= link_to 'Show', port_call, class: 'btn btn-secondary' %>
+                      <%= link_to 'Edit', edit_port_call_path(port_call), class: 'btn btn-light' %>
+                      <%= link_to 'Destroy', port_call, method: :delete, data: { confirm: 'This vessel has already departed. Are you sure you wish to delete? Any counts or tracking of operators will be removed from the database. This cannot be undone.' }, class: 'btn btn-danger' %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+						</tbody>
+					</table>
+			</div>
+    </div>
+  </div>
+</div>
