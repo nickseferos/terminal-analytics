@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :shifts
   resources :port_calls
   resources :vessels
+  get 'archive', to: 'archive#index'
 
   unauthenticated :user do
     root 'public#index'

@@ -1,4 +1,5 @@
 <h3>Vessels at <%= current_user.terminal.name %> <%= link_to 'Create New Port Call', new_port_call_path, class:'btn btn-outline-primary btn-lg' %></h3></br>
+<% if @current_port_calls.present? %>
 <div class="col-md-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
@@ -17,7 +18,7 @@
 							</tr>
 						</thead>
 						<tbody>
-              <% @port_calls.each do |port_call| %>
+              <% @current_port_calls.each do |port_call| %>
                 <tr>
                   <td><%= port_call.voyage.vessel.name %> <%= port_call.voyage.number %></td>
                   <td><%= port_call.first_line %></td>
@@ -40,7 +41,8 @@
     </div>
   </div>
 </div>
-
+<% end %>
+<% if @upcoming_port_calls.present? %>
 <div class="col-md-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
@@ -52,14 +54,14 @@
 								<th>Vessel &amp; Voyage</th>
 								<th>First Line</th>
 								<th>Est. Departure</th>
-								<th>Total Discharge</th>
-                <th>Total Load</th>
-                <th>Total Re-Handles</th>
+								<th>Proj/Total Discharge</th>
+                <th>Proj/Total Load</th>
+                <th>Proj/Total Re-Handles</th>
 
 							</tr>
 						</thead>
 						<tbody>
-              <% @port_calls.each do |port_call| %>
+              <% @upcoming_port_calls.each do |port_call| %>
                 <tr>
                   <td><%= port_call.voyage.vessel.name %> <%= port_call.voyage.number %></td>
                   <td><%= port_call.first_line %></td>
@@ -82,11 +84,13 @@
     </div>
   </div>
 </div>
+<% end %>
 
+<% if @previous_port_calls.present? %>
 <div class="col-md-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
-			<h6 class="card-title">Previous Vessels <%= link_to 'Create New Call', new_port_call_path, class: 'btn btn-light' %></h6>
+			<h6 class="card-title">Previous Vessels</h6><%= link_to 'Looking for Voyages over 8 weeks old?', archive_path, class: 'secondary' %>
 			<div class="table-responsive">
 					<table class="table table-hover">
 						<thead>
@@ -101,7 +105,7 @@
 							</tr>
 						</thead>
 						<tbody>
-              <% @port_calls.each do |port_call| %>
+              <% @previous_port_calls.each do |port_call| %>
                 <tr>
                   <td><%= port_call.voyage.vessel.name %> <%= port_call.voyage.number %></td>
                   <td><%= port_call.first_line %></td>
@@ -124,3 +128,4 @@
     </div>
   </div>
 </div>
+<% end %>

@@ -6,6 +6,9 @@ class PortCallsController < ApplicationController
   # GET /port_calls.json
   def index
     @port_calls = PortCall.all
+    @current_port_calls = PortCall.where(terminal_id: current_user.terminal_id).where('first_line <= ?', DateTime.now).where('last_line > ?', DateTime.now)
+    @upcoming_port_calls = PortCall.where(terminal_id: current_user.terminal_id).where('eta > ?', DateTime.now)
+    @previous_port_calls = PortCall.where(terminal_id: current_user.terminal_id).where('last_line <= ?', DateTime.now)
   end
 
   # GET /port_calls/1
@@ -21,6 +24,7 @@ class PortCallsController < ApplicationController
 
   # GET /port_calls/1/edit
   def edit
+    @voyage = Voyage.all
   end
 
   # POST /port_calls
